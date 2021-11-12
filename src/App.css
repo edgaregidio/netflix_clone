@@ -14,3 +14,17 @@ body {
 .lists {
   margin-top: -10rem;
 }
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem;
+  padding-top: 0;
+}
+
+footer span {
+  background: red;
+  display: flex;
+}
