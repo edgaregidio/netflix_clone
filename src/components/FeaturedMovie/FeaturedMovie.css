@@ -77,4 +77,31 @@
 
 .featured--horizontal h3 {
   margin-top: 0.938rem;
+  font-weight: 300;
+}
+
+@media (max-width: 760px) {
+  .featured {
+    height: 95vh;
+  }
+  .featured--horizontal h1 {
+    font-size: 2.5rem;
+  }
+  .featured--info {
+    font-size: 1rem;
+  }
+  .featured--horizontal p {
+    font-size: 1rem;
+    max-width: 100%;
+    margin-right: 0.875rem;
+  }
+
+  .featured--watchbutton,
+  .featured--mylistbutton {
+    font-size: 0.8rem;
+  }
+  .featured--horizontal h3 {
+    font-size: 0.875rem;
+    font-weight: 300;
+  }
 }
