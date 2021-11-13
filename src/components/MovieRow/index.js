@@ -1,12 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./MovieRow.css";
 
 export default function MovieRow({ title, items }) {
+  const [scrollX, setScrollX] = useState(-800);
+  const handleLeftArrow = () => {
+    let x = scrollX + Math.round(window.innerWidth / 2);
+    if (x > 0) {
+      x = 0;
+    }
+    setScrollX(x);
+  };
+  const handleRightArrow = () => {
+    let x = scrollX - Math.round(window.innerWidth / 2);
+    let listW = items.results.length * 200;
+    if (window.innerWidth - listW > x) {
+      x = window.innerWidth - listW - 110;
+    }
+    setScrollX(x);
+  };
   return (
     <div className="movieRow">
       <h2>{title}</h2>
+      <div className="movieRow--left" onClick={handleLeftArrow}>
+        <FontAwesomeIcon icon={faChevronLeft} style={{ fontSize: 50 }} />
+      </div>
+      <div className="movieRow--right" onClick={handleRightArrow}>
+        <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: 50 }} />
+      </div>
       <div className="movieRow--listarea">
-        <div className="movieRow--list">
+        <div
+          className="movieRow--list"
+          style={{
+            marginLeft: scrollX,
+            width: items.results.length * 200,
+          }}
+        >
           {items.results.length > 0 &&
             items.results.map((item, key) => (
               <div key={key} className="movieRow--item">
